@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>账本城 · 三章短篇与设定集</title>
+<meta name="description" content="课堂虚构作品《账本城》：三章短篇、世界观设定集、索引与连续性校对表。">
+<style>
+:root{
+  --paper:#faf7f1; --paper2:#f3eee3; --ink:#1f2428; --ink2:#4a545c; --ink3:#8a9299;
+  --line:#e2dacb; --blue:#4f6474; --blue-l:#e7edf1; --copper:#a6844f; --hit:#f6e7c8;
+  --serif:"Songti SC","SimSun","Noto Serif SC",Georgia,serif;
+  --sans:"PingFang SC","Microsoft YaHei","Hiragino Sans GB",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:17px;line-height:1.95;-webkit-font-smoothing:antialiased}
+#bar{position:fixed;top:0;left:0;height:2px;background:var(--copper);width:0;z-index:60;transition:width .15s}
+.wrap{display:flex;min-height:100vh}
+aside{width:276px;flex:0 0 276px;border-right:1px solid var(--line);background:var(--paper2);
+  position:sticky;top:0;height:100vh;overflow-y:auto;padding:26px 20px 40px}
+.brand{font-family:var(--sans);font-size:12px;letter-spacing:.22em;color:var(--ink3);margin-bottom:6px}
+.dl{display:inline-block;margin-top:6px;font-family:var(--sans);font-size:13px;color:var(--blue);
+  text-decoration:none;border-bottom:1px solid #c9d3da;padding-bottom:2px}
+.dl:hover{color:var(--ink);border-color:var(--ink)}
+.bname{font-size:27px;letter-spacing:.16em;margin:0 0 2px;font-weight:700}
+.bsub{font-size:12.5px;color:var(--ink2);line-height:1.7;margin-bottom:18px}
+.searchbox{position:relative;margin:14px 0 18px}
+#q{width:100%;padding:9px 11px;border:1px solid var(--line);background:#fff;border-radius:2px;
+  font-family:var(--sans);font-size:13px;color:var(--ink);outline:none}
+#q:focus{border-color:var(--blue);box-shadow:0 0 0 3px var(--blue-l)}
+.results{position:absolute;left:0;right:0;top:41px;background:#fff;border:1px solid var(--line);
+  max-height:280px;overflow:auto;display:none;z-index:40;box-shadow:0 12px 30px rgba(40,44,48,.10)}
+.results.on{display:block}
+.r{display:block;padding:8px 11px;border-bottom:1px solid #f1ece2;cursor:pointer;text-decoration:none;color:var(--ink)}
+.r:hover,.r.act{background:var(--blue-l)}
+.r b{font-weight:700;font-family:var(--sans);font-size:13.5px}
+.r span{display:block;font-family:var(--sans);font-size:11.5px;color:var(--ink3);margin-top:2px;line-height:1.5}
+.navitem{display:flex;align-items:center;gap:9px;padding:7px 9px;text-decoration:none;color:var(--ink2);
+  font-family:var(--sans);font-size:13.5px;border-radius:2px;line-height:1.5}
+.navitem:hover{background:#ece6d9;color:var(--ink)}
+.navitem.on{background:#fff;color:var(--ink);box-shadow:inset 2px 0 0 var(--copper)}
+.navitem .dot{width:4px;height:4px;border-radius:50%;background:var(--ink3);flex:0 0 4px}
+.navitem.on .dot{background:var(--copper)}
+.meta{margin-top:22px;padding-top:14px;border-top:1px solid var(--line);font-family:var(--sans);
+  font-size:11.5px;color:var(--ink3);line-height:1.9}
+main{flex:1;min-width:0;padding:0 0 90px}
+.inner{max-width:41rem;margin:0 auto;padding:0 30px}
+.panel{display:none;animation:fade .3s ease}
+.panel.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+h1{font-size:30px;letter-spacing:.06em;line-height:1.5;margin:56px 0 6px;font-weight:700}
+h2{font-size:19px;letter-spacing:.04em;margin:44px 0 14px;font-weight:700;color:var(--ink);
+  padding-left:12px;border-left:3px solid var(--copper);line-height:1.6}
+h3{font-size:16px;margin:30px 0 8px;font-weight:700;color:var(--ink2)}
+p{margin:0 0 1.05em;text-align:justify}
+blockquote{margin:20px 0;padding:14px 18px;background:#fff;border-left:2px solid var(--copper);
+  font-family:var(--sans);font-size:13.5px;line-height:1.9;color:var(--ink2)}
+code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.86em;background:#eee8dc;
+  padding:1px 5px;border-radius:2px;color:#5a4632}
+hr.rule{border:0;border-top:1px solid var(--line);margin:34px 0}
+ul,ol{margin:0 0 1.1em;padding-left:1.5em}
+li{margin:.28em 0}
+.tbl{margin:18px 0 24px;overflow-x:auto;border:1px solid var(--line);background:#fff}
+table{border-collapse:collapse;width:100%;font-family:var(--sans);font-size:13px;line-height:1.78}
+th,td{padding:9px 11px;border-bottom:1px solid #f0ebe0;text-align:left;vertical-align:top}
+th{background:var(--paper2);font-weight:700;color:var(--ink);white-space:nowrap;border-bottom:1px solid var(--line)}
+tbody tr:hover{background:#fcfaf5}
+.chapter{max-width:36rem;margin:0 auto}
+.chtitle{border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:28px}
+.chapter p{font-size:17.5px;line-height:2.05;text-indent:0}
+.chapter p.dlg{margin-bottom:.42em}
+.chapter p.dlg + p.dlg{margin-top:0}
+.pager{max-width:36rem;margin:44px auto 0;display:flex;justify-content:space-between;gap:12px}
+.pg{font-family:var(--sans);font-size:13px;padding:9px 16px;background:#fff;border:1px solid var(--line);
+  color:var(--ink2);cursor:pointer;border-radius:2px}
+.pg:hover{border-color:var(--blue);color:var(--ink)}
+/* 封面 */
+.coverbox{padding:46px 0 10px}
+.cover{width:100%;max-width:360px;display:block;margin:0 auto;box-shadow:0 18px 44px rgba(40,44,48,.16);border-radius:1px}
+.csscover{display:none;max-width:360px;margin:0 auto;aspect-ratio:2/3;background:linear-gradient(#788b96,#e4d4ba 72%);
+  position:relative;overflow:hidden;box-shadow:0 18px 44px rgba(40,44,48,.16)}
+.csscover .t{position:absolute;top:9%;left:0;right:0;text-align:center;font-size:40px;letter-spacing:.2em;
+  color:#28323a;font-weight:700}
+.csscover .s{position:absolute;top:20%;left:0;right:0;text-align:center;font-size:12.5px;color:#3c464e;font-family:var(--sans)}
+.csscover .pend{position:absolute;left:50%;top:30%;width:2px;height:16%;background:#585046;transform:translateX(-50%)}
+.csscover .bob{position:absolute;left:50%;top:46%;width:34px;height:34px;border-radius:50%;
+  background:radial-gradient(circle at 40% 35%,#cbb083,#a6804c);transform:translate(-50%,-50%)}
+.csscover .paper{position:absolute;left:8%;right:8%;top:50%;bottom:6%;background:#f1e8d5;
+  box-shadow:inset 0 0 0 1px #e0d3ba;clip-path:polygon(1% 2%,99% 1%,100% 99%,0 98%)}
+.csscover .shade{position:absolute;left:46%;top:46%;width:26%;height:52%;background:rgba(60,54,46,.16);transform:rotate(14deg)}
+.ctitle{text-align:center;margin-top:34px;font-size:34px;letter-spacing:.18em}
+.clead{text-align:center;font-family:var(--sans);font-size:13.5px;color:var(--ink2);margin-top:2px}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:560px;margin:34px auto 0}
+.fact{background:#fff;border:1px solid var(--line);padding:12px 10px;text-align:center}
+.fact b{display:block;font-family:var(--sans);font-size:19px;color:var(--copper);letter-spacing:.02em}
+.fact span{font-family:var(--sans);font-size:11px;color:var(--ink3)}
+.tag{display:inline-block;font-family:var(--sans);font-size:11px;padding:1px 7px;border-radius:2px;background:#ece6d9;color:#5a5040;white-space:nowrap}
+.tag-人物{background:#e6ecef;color:#3d5360}.tag-地点{background:#e9eee6;color:#4a5c43}
+.tag-道具{background:#f0e8dd;color:#6b5136}.tag-术语{background:#ece9f0;color:#4f4460}
+.idxtable th:nth-child(1),.idxtable td:nth-child(1){width:82px}
+.idxtable th:nth-child(2),.idxtable td:nth-child(2){width:58px}
+.idxtable th:nth-child(3),.idxtable td:nth-child(3){width:64px}
+.idxtable th:nth-child(5),.idxtable td:nth-child(5){width:150px}
+.idxtable td.c-name{font-weight:700;font-family:var(--serif);font-size:13.5px}
+.idxtable td.c-ch,.idxtable td.c-rel{color:var(--ink3);font-size:12px;white-space:nowrap}
+tr.hit td{background:var(--hit);transition:background 1.2s}
+.small{font-family:var(--sans);font-size:12.5px;color:var(--ink3)}
+@media(max-width:900px){
+  .wrap{display:block}
+  aside{position:static;width:auto;height:auto;border-right:0;border-bottom:1px solid var(--line);padding:18px 16px}
+  .bname{font-size:22px}
+  .bsub,.meta{display:none}
+  .cover{max-width:250px}
+  .inner{padding:0 18px}
+  h1{font-size:24px;margin-top:34px}
+  .facts{grid-template-columns:repeat(2,1fr)}
+  .chapter p{font-size:16.5px}
+}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+<div class="wrap">
+<aside>
+  <div class="brand">课堂虚构作品 · AI 小说与 IP 设定集</div>
+  <h1 class="bname">账本城</h1>
+  <div class="bsub">三章短篇 · 世界观设定集 · 25 条索引<br>全书 3575 字，一次读完。</div>
+  <div class="searchbox">
+    <input id="q" type="text" autocomplete="off" placeholder="检索索引：输入名称 / 类别 / 释义">
+    <div class="results" id="res"></div>
+  </div>
+  <nav><a class="navitem" data-t="cover" href="#cover"><span class="dot"></span>封面</a><a class="navitem" data-t="ch1" href="#ch1"><span class="dot"></span>第一章 换页</a><a class="navitem" data-t="ch2" href="#ch2"><span class="dot"></span>第二章 排队</a><a class="navitem" data-t="ch3" href="#ch3"><span class="dot"></span>第三章 钟响</a><a class="navitem" data-t="setting" href="#setting"><span class="dot"></span>世界观设定集</a><a class="navitem" data-t="appendix" href="#appendix"><span class="dot"></span>设定附录 · 索引</a><a class="navitem" data-t="audit" href="#audit"><span class="dot"></span>连续性校对表</a><a class="navitem" data-t="sales" href="#sales"><span class="dot"></span>IP 商业化与销售</a><a class="navitem" data-t="notes" href="#notes"><span class="dot"></span>制作说明</a></nav>
+  <div class="meta">
+    索引：人物 4 · 地点 6 · 道具 8 · 术语 7<br>
+    校对：8 处问题已修订 / 7 项通过<br>
+    本页零外部依赖，可离线双击打开。
+  </div>
+</aside>
+<main>
+<div class="inner">
+
+<section class="panel on" id="cover">
+  <div class="coverbox">
+    <img class="cover" id="coverimg" src="10_封面.png" alt="《账本城》封面：摊开的旧账册、静止的钟摆与斜长阴影">
+    <div class="csscover" id="csscover">
+      <div class="t">账本城</div>
+      <div class="s">一部关于条目、划掉与钟声的三章短篇</div>
+      <div class="pend"></div><div class="bob"></div>
+      <div class="paper"></div><div class="shade"></div>
+    </div>
+    <div class="ctitle">账本城</div>
+    <div class="clead">一部关于条目、划掉与钟声的三章短篇</div>
+    <div class="facts">
+      <div class="fact"><b>3</b><span>章 正 文</span></div>
+      <div class="fact"><b>3575</b><span>字 · 汉字</span></div>
+      <div class="fact"><b>5</b><span>条 硬 设 定</span></div>
+      <div class="fact"><b>25</b><span>条 索 引</span></div>
+    </div>
+    <p style="text-align:center;margin-top:22px"><a class="dl" href="download/%E7%AC%AC2%E8%AF%BE_%E5%B0%8F%E8%AF%B4%E5%88%B6%E4%BD%9C%E5%8C%85_wxb471.zip">↓ 下载完整制作包（ZIP · 13 份成果 + 复现脚本）</a></p>
+  </div>
+  <h2>这本书讲什么</h2>
+  <p>账本城不用钱，只用「条目」：每写下一条，就必须划掉另一条。东街的记录员沈砚每天给公共账册换页，某天他发现昨日最后一格本该有条目，纸面却是空的。他袖口里那半片撕角旧纸，只剩半个「木」字。</p>
+  <p>一个只会抄写的人、一个从不摘手套的守钟人、一个只在周五傍晚出现的学徒，被同一页纸牵到一起。这一周周五傍晚，旧钟楼的钟响了一次——城里只有一个人做了不可撤回的选择。</p>
+  <h2>怎么读</h2>
+  <ul>
+    <li>左侧目录切换章节；每章末尾有「本章状态登记」（人物位置、随身道具、时间点）。</li>
+    <li>顶部检索框可查 25 条索引，回车即跳到附录对应条目并高亮。</li>
+    <li>另有《世界观设定集》《连续性校对表》《IP 商业化与销售》《制作说明》四个附录页。</li>
+  </ul>
+</section>
+
+<section class="panel" id="ch1"><div class="chapter"><h1 class="chtitle">第一章 换页</h1><h2>一 · 东街（周一清晨）</h2>
+<p>周一清晨，东街的长桌被抬回原位。桌面上还留着抹布拖过的水痕，顺着木纹往下淌了半寸，停住。沈砚把公共账册的新一页铺平，四个角依次按下去。纸背有点潮，按一下，留一个浅浅的指印。</p>
+<p>他今天走得比平时慢。腰上的铜钥匙敲着胯骨，一下，一下。走三步响两声，第四步他停下来，等那一声响完再走。</p>
+<p>昨日那一页的最后一格是空的。不是没写，是干净。没有墨，没有划痕，连指印也没有。纸面平得像刚被人从上到下压过一遍。</p>
+<p>「换页了。」长桌那头有人说。</p>
+<p>「换了。」沈砚把铜尺摆正，压在纸的上沿。</p>
+<p>那人走过来两步，手插在袖子里，低头看那一格。「昨天最后一条呢。」</p>
+<p class="dlg">「写了。」</p>
+<p class="dlg">「写的什么。」</p>
+<p>沈砚没有答。他把铜尺往前挪了一寸。纸角翘起来，露出下面压着的一小片纸。毛边，是撕下来的，不是剪的。上面只剩左边半个字，一个「木」，右边是空的。</p>
+<p>他把它捏起来，对着窗口的光看。纸很薄，能透出后面的木纹。折痕是旧的，压过不止一次，折线已经发白。</p>
+<p>他把纸折成两折，塞进袖口，再写今天的一条。笔尖压下去，纸上留下一行：东街换页，昨日最后一格是空的，我没有补。写完他数了一遍，连标点二十一个字。墨还没有干，指腹一碰就散开一点。</p>
+<p>「明天见。」长桌那头的人已经收好笔，往街口去了。</p>
+<p>「明天见。」沈砚说。</p>
+<p>他等到人影看不见了，才把袖口里的那片纸又摸出来，摊在掌心，看那半个「木」。铜钥匙垂在一边，碰到桌沿，响了一声很轻的金属音。他没有去扶。</p>
+<h2>二 · 纸街（周二下午）</h2>
+<p>纸街的墙是纸叠起来的。一层压一层，边角全卷了。风从街口灌进来，整面墙响一下，又停住。</p>
+<p>阿桉在墙下理上周的条目。她把纸一张一张摊平，用一把钝口纸刀压住角，再从边上撕下一条窄边。撕得很慢，慢到能听见纸断开的那一声。</p>
+<p>「这是存根。」她把窄边在指间过了一下，「抄过什么，留一条做凭。」</p>
+<p>沈砚看着她手上那一条窄边。边是毛的，宽度和她围裙口袋露出的那一角一样。</p>
+<p>「上周的条子，你理到哪儿了。」沈砚站在她旁边，没有坐。</p>
+<p>「周三。」她说话前先停半拍，眼睛不离手上的纸。</p>
+<p class="dlg">「周三有一条是我写的。」</p>
+<p class="dlg">「我知道。」</p>
+<p class="dlg">「那条不见了。」</p>
+<p>「不见的不止一条。」她把撕下来的窄边对齐，摞在左手边。</p>
+<p>沈砚看着那一摞窄边。一样宽，一样长，边上是毛的，和她围裙口袋露出的那一角一样。</p>
+<p class="dlg">「你抄过别人的条目没有。」</p>
+<p>纸刀停在半空。「抄过一次。」</p>
+<p class="dlg">「抄的谁的。」</p>
+<p class="dlg">「不说。」</p>
+<p class="dlg">「什么时候。」</p>
+<p>「上周。」她把纸刀放下，手在围裙上擦了一下，留下两道浅灰。</p>
+<p>「抄一次要占掉什么。」沈砚问。</p>
+<p>「占掉我那天唯一的一条。」她终于抬头，「我每天都写同一条，写我自己的名字。抄别人的日子，我就写不成。」</p>
+<p>沈砚没有再问。他往后退了半步，鞋跟碰到墙脚，纸墙又响了一下。</p>
+<p>阿桉低头继续理她的条目。理到第三张的时候，她从围裙口袋里把那一角纸掏出来，看了一眼，又塞回去，动作很快，像在藏一件早就说好要还的东西。</p>
+<h2>三 · 钟楼街（周三上午）</h2>
+<p>钟楼街早上没有人。影子从旧钟楼那头铺过来，一直铺到街心，压过石板之间的缝。</p>
+<p>钟叔在擦钟。他戴着手套，一只手扶着钟摆，一只手拿布，从上往下擦。钟摆不动。布擦过去，铜面上留下一道亮，很快又暗回去。</p>
+<p class="dlg">「钟为什么停着。」</p>
+<p class="dlg">「不是停。」</p>
+<p class="dlg">「那是什么。」</p>
+<p>「有人让它停。」钟叔没有回头。</p>
+<p>沈砚往前一步。手套很旧，指头那里磨得发亮，像被握了很多年。</p>
+<p class="dlg">「停在什么时辰。」</p>
+<p class="dlg">「你知道了也没用。」</p>
+<p class="dlg">「我想知道。」</p>
+<p>钟叔停下手里的布。他侧过头，看了看沈砚的袖口。那只袖子比另一只沉一点，垂下来的时候，口子上有一道折。</p>
+<p class="dlg">「那半张不是你的。」</p>
+<p>沈砚把袖子往下拉了拉。「在我账册里。」</p>
+<p>「纸不是你的。」钟叔把布叠成方块，塞进口袋，「字也不是。」</p>
+<p>他说完就低下头继续擦。铜面上那道亮留了很久，没有再暗下去。沈砚站在原地等了一会儿，钟楼里什么声音也没有，指针没有动，三点十七分被锈咬住。</p>
+<h2>本章状态登记</h2>
+<div class="tbl"><table><thead><tr><th>人物</th><th>章末位置</th><th>随身道具</th><th>时间点</th></tr></thead><tbody><tr><td>沈砚</td><td>钟楼街，钟楼下方三步</td><td>铜钥匙（腰间）、半片毛边旧纸（袖口内）、铜尺（留在东街长桌）</td><td>周三上午</td></tr><tr><td>阿桉</td><td>纸街，纸墙下</td><td>钝口纸刀、撕角存根（围裙口袋）</td><td>周二下午（本章最后一次出现）</td></tr><tr><td>钟叔</td><td>钟楼街，钟楼内梯口</td><td>旧手套（未摘下）、擦布</td><td>周三上午</td></tr><tr><td>小满</td><td>未出场（周五才出现）</td><td>—</td><td>—</td></tr></tbody></table></div>
+<h2>本章字数</h2>
+<p>汉字 1230 个；连标点非空白字符 1492 个；台词 37 处（脚本核对，见 <code>12_制作说明.md</code>）。</p>
+<hr class="rule"></div><div class="pager"><button class="pg" data-go="cover">← 上一章</button><button class="pg" data-go="ch2">下一章 →</button></div></section><section class="panel" id="ch2"><div class="chapter"><h1 class="chtitle">第二章 排队</h1><h2>一 · 东街（周四清晨）</h2>
+<p>周四清晨，长桌上多了一层薄灰。沈砚把袖子挽到肘上，先掸了一遍桌角，才翻开账册。</p>
+<p>昨天那一格有字。今天这一格是空的。</p>
+<p>他把笔尖蘸了墨，写下第一行：谁抄走了我那条。</p>
+<p>写完他看了一会儿。墨迹慢慢吃进纸里，边沿先深，中间浅。他又蘸了一次墨，笔尖悬在第二行的位置上。</p>
+<p>他知道规矩。他也知道第二行落下去会发生什么。</p>
+<p>笔尖落下去，他写了两个字：我不。</p>
+<p>第一行开始退。不是被擦掉，是往里退，像水渗进更深的纸层。他伸手去按，指腹按在那句问句上，墨从指缝下面散开，散完就没了。纸上只剩淡淡一层水痕，形状像一条被压平的河。</p>
+<p>第二行留着：我不。</p>
+<p>他坐着没有动。三个月前也是这样。那天他写下「我想知道钟为什么停」，第二天怕了，落笔补了半句，把那句问句亲手退了回去。他后来对所有人说那条被人抄走了，说了三个月，说到自己都信了。</p>
+<p>桌对面有人把笔放下，笔杆碰到桌面，声音很轻，顺着灰一路滑到尽头。</p>
+<p>「今天写得早。」那人说。</p>
+<p>「早。」沈砚把账册合上，铜钥匙从腰上解下来，攥在手里。</p>
+<h2>二 · 纸街（周四下午）</h2>
+<p>纸街的纸墙比上周矮了一截。整理过的条目被收走，墙上剩下一格一格的空。</p>
+<p>阿桉在收她的纸刀。看见他，她先把刀放进围裙口袋，才开口：「你来还东西。」</p>
+<p>「我来求一次。」沈砚把袖口里那半片旧纸摊在她面前的木板上。「这一张，你抄过。」</p>
+<p>她看了很久。「抄过。」</p>
+<p class="dlg">「抄写的时候，你记得住多少。」</p>
+<p>「抄写这一行，手比记性可靠。」她把纸刀转了个方向，「手记住的比脑子多，脑子就开始少。」</p>
+<p class="dlg">「抄完的那一条，现在在哪本账册里。」</p>
+<p class="dlg">「不能说。」</p>
+<p>「我只要看一眼。」他说，「我连自己划掉的是哪几个字都不确定。」</p>
+<p>阿桉把纸刀从口袋里拿出来，又放回去。「一条只抄得准一次。抄过的那一条，不能再抄。你要的那一句，已经被抄走一次了。」</p>
+<p class="dlg">「那就抄第二句。」</p>
+<p>「第二句你还没有写。」她看着他，「你真正想问的不是钟为什么停。」</p>
+<p>沈砚没有接话。木板上的半片旧纸被风掀起一个角，他用手压住。</p>
+<p>「你想问什么，写下来。」阿桉说，「写下来我再抄。抄完你就再也拿不回去了，这个你要先想清楚。」</p>
+<p>他把纸收进袖口，折了两折，跟三个月前折的一样。</p>
+<p>「周五傍晚。」她说。</p>
+<p>「周五傍晚。」他应了一声，转身的时候鞋跟磕在纸墙脚上，墙又响了一下。</p>
+<h2>三 · 寄存处门口（周四傍晚）</h2>
+<p>寄存处在两条街的交口。木门不高，门板上有一道从上到下的裂缝，缝里塞着旧纸。门左边是一个小窗，窗台被磨得很光。</p>
+<p>队伍已经排到街角。没有人说话。每个人手里都捏着一块木牌，牌上刻着编号。</p>
+<p>沈砚站到队尾。队尾前面站着阿桉，浅色围裙在傍晚的光里几乎看不出颜色。她手里也捏着一块木牌，牌角磨圆了。</p>
+<p>「你也来寄存。」沈砚说。</p>
+<p>「纸街的条目放在这里。」她没有回头，「我每周这个时候都来。」</p>
+<p>太阳落到屋顶后面，影子从街角爬过来，爬过他的鞋面。</p>
+<p>小窗开了。里面是短发，低着头，先说话再抬头：「到点了。一周只开这一晚。」</p>
+<p>「我排到了。」沈砚说。</p>
+<p class="dlg">「牌子。」</p>
+<p class="dlg">「我没有牌子。」</p>
+<p>里面的人抬起脸。她看了一眼他的腰，又看他的手。「你手上那把，是里面的钥匙。」</p>
+<p>沈砚把铜钥匙翻过来。钥匙齿很短，柄上刻着一道横纹，横纹里嵌着墨。</p>
+<p>「这把开里面的柜。」小满说，「你从哪来的。」</p>
+<p class="dlg">「我换页那年就挂在腰上了。」</p>
+<p class="dlg">「谁给你的。」</p>
+<p>沈砚答不上来。他把钥匙握紧，齿尖硌进掌心。</p>
+<p>小满低下头，在小窗后面翻了一会儿，翻纸的声音很密。「柜里少了一角。」她说得很轻，「我没敢报。」</p>
+<p class="dlg">「少了哪一角。」</p>
+<p>她没有回答。小窗关上了，木门上的裂缝里透出一线光。</p>
+<h2>本章状态登记</h2>
+<div class="tbl"><table><thead><tr><th>人物</th><th>章末位置</th><th>随身道具</th><th>时间点</th></tr></thead><tbody><tr><td>沈砚</td><td>寄存处门口，队尾</td><td>铜钥匙（手中）、半片毛边旧纸（袖口内）、账册（今日仅一行「我不」）</td><td>周四傍晚</td></tr><tr><td>阿桉</td><td>寄存处门口，队中（沈砚前面一位）</td><td>钝口纸刀、撕角存根、木牌（牌角磨圆）</td><td>周四傍晚</td></tr><tr><td>小满</td><td>寄存处内，小窗后</td><td>布包、刻号木牌一叠</td><td>周四傍晚</td></tr><tr><td>钟叔</td><td>未出场</td><td>—</td><td>—</td></tr></tbody></table></div>
+<h2>本章字数</h2>
+<p>汉字 1124 个；连标点非空白字符 1366 个；台词 37 处（脚本核对，见 <code>12_制作说明.md</code>）。</p>
+<hr class="rule"></div><div class="pager"><button class="pg" data-go="ch1">← 上一章</button><button class="pg" data-go="ch3">下一章 →</button></div></section><section class="panel" id="ch3"><div class="chapter"><h1 class="chtitle">第三章 钟响</h1><h2>一 · 寄存处（周五傍晚）</h2>
+<p>周五傍晚，木门开了。</p>
+<p>门轴响的时候，排队的人一起往前挪了半步，又停住。小满站在门里，手里捧着一叠木牌，牌上的编号朝外。</p>
+<p>「一个一个来。」她说，「牌子对柜，柜对页。」</p>
+<p>轮到沈砚的时候，她把一块牌子递过来，牌上是十七。「你的钥匙开十七号柜。里屋的门我开，柜子你自己开。」</p>
+<p>十七号柜在里屋的最下面一层。柜门是薄木板，锁是老式的，钥匙插进去要往里推一下才咬得住。沈砚推了一下，锁芯里有东西落下去，柜门自己开了一条缝。</p>
+<p>柜里的账页没有编号，按划痕的深浅摞着。最上面一叠划得浅，越往下越深，最深的那几页，划痕把纸都划穿了。</p>
+<p>他把半片旧纸摊在膝上，一页一页对。对到第七页的时候，纸的右上角缺了一块，缺口是毛的，和他手里那半片的毛边合在一起，连撕断时的那一道斜口都对得上。</p>
+<p>他抽出那一页。页上只有一行字：让钟停在三点十七分。</p>
+<p>落款的地方被划掉了。划得很重，横着一道，竖着一道，又横着一道，墨透到背面，把纸背也划破了。</p>
+<p>「下面还有一行。」阿桉在他身后说。</p>
+<p>他把纸对着窗。背面有极浅的一行字，被正面的墨压住了，只能认出三个：我、的、名。后面没有了。</p>
+<h2>二 · 寄存处（周五傍晚，同一盏灯下）</h2>
+<p>钟叔来的时候，门还开着。他站在门口没有进来，一只手扶着门框。手套还在手上。</p>
+<p>「那一页，是你写的。」沈砚把纸举起来。</p>
+<p class="dlg">「是我写的。」</p>
+<p class="dlg">「落款呢。」</p>
+<p class="dlg">「划掉了。」</p>
+<p>「划掉的名字，不能要回来。」沈砚把纸放下，「这个我知道。」</p>
+<p>钟叔走进来。他走得很慢，鞋底在地板上擦出声音。走到灯下，他把左手的手套摘了下来。</p>
+<p>掌心里什么都没有。不是茧，不是纹，是一片平的，像被划过很多次的纸背，光在上面滑过去，留不住。</p>
+<p>「写不出自己的字。」他说，「写完那一行，就写不出了。」</p>
+<p>阿桉往前一步，看清了那只手，退回去半步。</p>
+<p>钟叔从外套里取出一本薄账册，翻到中间，放在灯下。册子上有一行字，笔迹很慢，每一笔都停过半拍：我想知道钟为什么停。</p>
+<p>「上周抄来的。」他说，「抄完这一行，我才停得下钟。」</p>
+<p>沈砚看着那一行。墨是旧的，纸边已经起了毛。他伸出手，指腹离纸还有半寸就停住，没有碰。</p>
+<p>「抄一次。」钟叔把手套推回手上，一根手指一根手指按进去。「我等你抄。」</p>
+<p>「抄在谁那里，谁就要少一条。」阿桉说。</p>
+<p>「少一条。」钟叔把手套重新戴好，「比少一辈子好。」</p>
+<h2>三 · 钟楼街（周五傍晚）</h2>
+<p>钟楼街的影子已经拉到了街口。</p>
+<p>四个人站在钟楼下面。钟摆停着，指针压在三点十七分上，边缘有一层薄锈。</p>
+<p>阿桉把账册摊在石阶上，翻到今天那一格。她握着笔，笔尖在纸上停了一会儿，然后落下，写下两个字：钟叔。</p>
+<p>墨吃进纸里。她的账册上今天只有这一行。她没有写自己的名字。</p>
+<p>钟摆动了一下。只一下，又停住。</p>
+<p>「还差一条。」钟叔说。</p>
+<p>沈砚把自己的账册翻开。最新的一格还是昨天那一行：我不。今天的还没有写。</p>
+<p>他把笔蘸满墨，横过去划了一道。墨把两个字盖住，笔尖划过纸面的时候有一点涩。他又竖着划了一道，把整格框起来。</p>
+<p>钟响了。</p>
+<p>一声，不长，铜里的余音顺着街面往两头散，撞在纸墙上，又弹回来。指针从三点十七分往前跳了一格，停在三点十八分，然后不动了。</p>
+<p>钟叔抬头看指针，没有戴手套的那只手垂在身侧，掌心的空白对着地面。</p>
+<p>那半片旧纸他交给了阿桉。她接过去，跟柜里那一页的缺口比对了一下，两个毛边合上，斜口对得严丝合缝。她把两片一起夹回账页里，压平，交给小满放回十七号柜。</p>
+<p>「还回去了。」她说。</p>
+<p>小满关上柜门。沈砚把铜钥匙插回锁孔，往里推了一下，锁咬住了。他没有拔，钥匙留在里面，柄上那道横纹朝着外面。</p>
+<p>周六清晨，公共账册被收进档案柜。收页的人翻到东街那一页，看见最后一格只剩一道划痕，认不出原来的字，就照着规矩把整页压平，摞到最下面。</p>
+<p>钟楼街上的影子，比前一天短了一寸。</p>
+<h2>本章状态登记</h2>
+<div class="tbl"><table><thead><tr><th>人物</th><th>章末位置</th><th>随身道具</th><th>时间点</th></tr></thead><tbody><tr><td>沈砚</td><td>钟楼街，钟楼下</td><td>空手（铜钥匙留在十七号柜锁内，未拔）、账册（最近一格已整格划掉）、袖中已无旧纸（已交阿桉合回账页）</td><td>周五傍晚至周六清晨</td></tr><tr><td>阿桉</td><td>钟楼街，石阶旁</td><td>钝口纸刀、写有「钟叔」二字的自己账册</td><td>周五傍晚</td></tr><tr><td>钟叔</td><td>钟楼街，钟楼下</td><td>旧手套（已重新戴上）、薄账册（抄有「我想知道钟为什么停」一行）、擦布</td><td>周五傍晚</td></tr><tr><td>小满</td><td>寄存处门口</td><td>布包、木牌一叠（十七号已收回）</td><td>周五傍晚</td></tr></tbody></table></div>
+<h2>本章字数</h2>
+<p>汉字 1221 个；连标点非空白字符 1450 个；台词 21 处（脚本核对，见 <code>12_制作说明.md</code>）。</p></div><div class="pager"><button class="pg" data-go="ch2">← 上一章</button><button class="pg" data-go="setting">下一章 →</button></div></section>
+
+<section class="panel" id="setting">
+  <div class="chapter">
+<blockquote>来源：<code>01_世界观设定包.md</code>。本文件只做结构化整理，<strong>不新增任何规则</strong>；设定包未写明的，一律标注「待补充」，不自行编造。<br>本文件是三章正文的最高约束：与正文冲突时，以本文件为准。</blockquote>
+<h2>一、基本设定（原文复述）</h2>
+<p>账本城是一座把「每一次选择」都记进公共账册的架空校园城。城中居民不使用货币，只使用「条目」：每写下一条，就必须划掉另一条。城里有三条街（东街、纸街、钟楼街）、一座旧钟楼、一间只在周五开放的寄存处。</p>
+<h2>二、硬设定清单 H1—H5（违反即判错）</h2>
+<div class="tbl"><table><thead><tr><th>编号</th><th>规则原文</th><th>检查方法（正文中如何判定是否被违反）</th><th>违反样例（禁止出现）</th></tr></thead><tbody><tr><td><strong>H1</strong></td><td>任何人每天只能在公共账册上写一条新条目，写第二条时第一条会自动消失。</td><td>逐日统计每个出场人物在公共账册上「写下」的动作次数。同一人物同一天出现第 2 次落笔，必须同时出现「前一条消失」的可见后果（纸面变空、墨迹退去、旁人读不到）。若写了第二条而第一条仍在，判违反。</td><td>沈砚上午写一条、傍晚又写一条，两条同时存在于账册。</td></tr><tr><td><strong>H2</strong></td><td>寄存处只在周五傍晚开放，其余时间门是锁着的，任何人都不能进入。</td><td>凡出现「进入寄存处」的场景，先核对时间标签是否为周五傍晚；凡出现门被打开，必须写明是周五傍晚且由持钥者开启。周一至周四、周六出现「进门」「门开了」即判违反；门口排队、隔窗看、敲门不算进入。</td><td>周四傍晚小满推门进去取东西。</td></tr><tr><td><strong>H3</strong></td><td>旧钟楼的钟只在有人做出「不可撤回的选择」时敲响，其他时候永远静止。</td><td>每次钟响前后各查一次：紧邻段落里是否有人做出不可撤回的选择（划掉不可恢复的条目、交出不归还的物、说出不能收回的话）。钟响而无此选择、或有此选择而钟不响（除结尾刻意留白）均判违反；指针移动不算敲响。</td><td>周三擦拭钟楼时钟自己响了一声。</td></tr><tr><td><strong>H4</strong></td><td>划掉的条目无法恢复，但可以在别人的账册里被重新抄写一次。</td><td>三重检查：①原账册上被划掉的条目不得复原（墨迹不得回来、划痕不得消失）；②「重新抄写」只能发生在<strong>别人的</strong>账册里，抄在本人账册判违反；③同一被划条目全篇只能被抄写<strong>一次</strong>，出现第二次抄写即判违反。</td><td>沈砚在自己账册里把划掉的一条重写一遍。</td></tr><tr><td><strong>H5</strong></td><td>城中不允许出现「购买」「付款」「价格」这类与货币有关的说法。</td><td>全文检索禁用词表：购买、付款、价格、钱、买、卖、收费、账目金额、币。台词与叙述均不得出现；出现同义替换（"拿东西换"以外的交易语）也判违反。等价表达只允许"条目""划掉""抄写""寄存"。</td><td>阿桉说"这条要收两个条目"。</td></tr></tbody></table></div>
+<h2>三、地理与场所表</h2>
+<div class="tbl"><table><thead><tr><th>场所</th><th>位置关系</th><th>特征（原文）</th><th>正文可用细节（由原文推导，非新规则）</th><th>常见误用</th></tr></thead><tbody><tr><td>东街</td><td>三条街之一，公共账册所在</td><td>长桌连成一排，人们在这里写条目</td><td>长桌、木纹、水痕、铜尺、换页的时辰</td><td>把东街写成有店铺、有柜台的商业街</td></tr><tr><td>纸街</td><td>三条街之一</td><td>抄写员聚集，墙上是层层旧纸</td><td>层次旧纸、纸痕、围裙、撕角存根</td><td>写成印刷厂或书市</td></tr><tr><td>钟楼街</td><td>三条街之一</td><td>安静，地面有钟摆投下的长影</td><td>影子长度、地面、无人久留</td><td>写成热闹集市中心</td></tr><tr><td>寄存处</td><td>独立建筑，门朝街</td><td>木门、小窗、只在周五开</td><td>木门、小窗、锁、门缝、队伍</td><td>非周五出现内部描写</td></tr><tr><td>旧钟楼</td><td>独立建筑，钟楼街尽头</td><td>指针停在某个位置，无人知道是谁停的</td><td>指针位置、钟摆、擦拭痕迹、无声</td><td>让钟自行走动或报时</td></tr></tbody></table></div>
+<p><strong>待补充：</strong> 三条街之间的步行距离、账本城的城门与外部、居民人数、学期与课业制度——设定包均未写明，正文一律回避，不作描写。</p>
+<h2>四、时间线表（6 个时间点，全部来自设定包）</h2>
+<div class="tbl"><table><thead><tr><th>序号</th><th>时间点</th><th>事件（原文）</th><th>正文归属</th></tr></thead><tbody><tr><td>T1</td><td>周一清晨</td><td>公共账册换上新的一页</td><td>第 1 章 · 场景 1</td></tr><tr><td>T2</td><td>周二下午</td><td>纸街的抄写员开始整理上周条目</td><td>第 1 章 · 场景 2（借"整理上周条目"引出存根）</td></tr><tr><td>T3</td><td>周三上午</td><td>钟楼无故被擦拭一遍，但钟没有响</td><td>第 1 章 · 场景 3 提及（钟叔擦钟，钟不响）</td></tr><tr><td>T4</td><td>周四傍晚</td><td>寄存处门口第一次出现排队的人</td><td>第 2 章 · 场景 3</td></tr><tr><td>T5</td><td>周五傍晚</td><td>寄存处开放，钟楼敲响一次</td><td>第 3 章 · 场景 1—3（全篇唯一一次钟响）</td></tr><tr><td>T6</td><td>周六清晨</td><td>公共账册被收进档案柜</td><td>第 3 章结尾一句话收束</td></tr></tbody></table></div>
+<p><strong>时间推进规则（据 H1 推导）：</strong> 正文不得回跳。章末时间必须早于或等于下章开头时间（第 1 章止于周三傍晚，第 2 章起于周四清晨，第 3 章起于周五傍晚）。</p>
+<h2>五、本世界不可能发生的事（3 条负面约束）</h2>
+<ol><li><strong>任何人用钱买东西或讨论价格。</strong> → 正文不得出现货币、交易、找零、讨价还价；不得用「值多少」评价物品。</li><li><strong>任何人把已经划掉的条目在自己账册里恢复。</strong> → 被划掉的条目只能留在别人的账册里被抄一次；本人不得复原、不得补写同一条、不得声称"想起来就等于没划"。</li><li><strong>钟在没有「不可撤回的选择」时自己敲响。</strong> → 全篇钟只响一次，且必须紧跟一个不可撤回的选择；不得用风声、震动、擦拭解释钟声。</li></ol>
+<h2>六、可推导的边界（说明，不是新规则）</h2>
+<p>以下三条只是把 H1—H5 的边界写清楚，供校对时判定，不构成新增设定：</p>
+<ul><li>「一条」指一次完整的落笔成条，不含涂改笔画；涂改不产生新条目（依据 H1）。</li><li>「不可撤回」指划掉后无法恢复的动作或无法收回的话（依据 H3 + H4）。</li><li>「寄存」指把账页交给寄存处保管，不涉及任何交换（依据 H2 + H5）。</li></ul>
+  </div>
+</section>
+
+<section class="panel" id="appendix">
+  <div class="chapter">
+    <h1 class="chtitle">设定附录 · 索引</h1>
+    <p class="small">下列 25 条全部由正文抽取，脚本核对：JSON 可解析、related 全部命中。与《世界观设定集》有出入时，以设定集为准。</p>
+<div class="tbl"><table class="idxtable"><thead><tr><th>名称</th><th>类别</th><th>首次出现</th><th>释义</th><th>关联条目</th></tr></thead><tbody><tr id="idx-0" class="idxrow"><td class="c-name">沈砚</td><td><span class="tag tag-人物">人物</span></td><td class="c-ch">第 1 章</td><td>东街记录员，负责给公共账册换页</td><td class="c-rel">公共账册、铜钥匙、东街</td></tr><tr id="idx-1" class="idxrow"><td class="c-name">阿桉</td><td><span class="tag tag-人物">人物</span></td><td class="c-ch">第 1 章</td><td>纸街抄写员，能把被划掉的条目抄一次</td><td class="c-rel">纸街、抄写、存根、钝口纸刀</td></tr><tr id="idx-2" class="idxrow"><td class="c-name">钟叔</td><td><span class="tag tag-人物">人物</span></td><td class="c-ch">第 1 章</td><td>旧钟楼看守，从不摘下手套</td><td class="c-rel">旧钟楼、手套、三点十七分</td></tr><tr id="idx-3" class="idxrow"><td class="c-name">小满</td><td><span class="tag tag-人物">人物</span></td><td class="c-ch">第 2 章</td><td>寄存处学徒，只在周五傍晚开门</td><td class="c-rel">寄存处、木牌、十七号柜</td></tr><tr id="idx-4" class="idxrow"><td class="c-name">东街</td><td><span class="tag tag-地点">地点</span></td><td class="c-ch">第 1 章</td><td>长桌连排，公共账册所在的那条街</td><td class="c-rel">公共账册、沈砚、换页</td></tr><tr id="idx-5" class="idxrow"><td class="c-name">纸街</td><td><span class="tag tag-地点">地点</span></td><td class="c-ch">第 1 章</td><td>抄写员聚集，墙由层层旧纸叠成</td><td class="c-rel">阿桉、抄写、存根</td></tr><tr id="idx-6" class="idxrow"><td class="c-name">钟楼街</td><td><span class="tag tag-地点">地点</span></td><td class="c-ch">第 1 章</td><td>安静，地面铺着钟摆投下的长影</td><td class="c-rel">旧钟楼、钟叔</td></tr><tr id="idx-7" class="idxrow"><td class="c-name">寄存处</td><td><span class="tag tag-地点">地点</span></td><td class="c-ch">第 2 章</td><td>木门小窗，只在周五傍晚开放</td><td class="c-rel">小满、木牌、十七号柜</td></tr><tr id="idx-8" class="idxrow"><td class="c-name">旧钟楼</td><td><span class="tag tag-地点">地点</span></td><td class="c-ch">第 1 章</td><td>指针停住，无人知道是谁让它停的</td><td class="c-rel">钟叔、三点十七分</td></tr><tr id="idx-9" class="idxrow"><td class="c-name">十七号柜</td><td><span class="tag tag-地点">地点</span></td><td class="c-ch">第 3 章</td><td>寄存处里屋最下层，存旧账页</td><td class="c-rel">寄存处、木牌、铜钥匙</td></tr><tr id="idx-10" class="idxrow"><td class="c-name">公共账册</td><td><span class="tag tag-道具">道具</span></td><td class="c-ch">第 1 章</td><td>每人每天只写一条，写第二条前条消失</td><td class="c-rel">沈砚、换页、条目</td></tr><tr id="idx-11" class="idxrow"><td class="c-name">铜钥匙</td><td><span class="tag tag-道具">道具</span></td><td class="c-ch">第 1 章</td><td>沈砚腰间，开十七号柜，柄上有横纹</td><td class="c-rel">沈砚、十七号柜、寄存处</td></tr><tr id="idx-12" class="idxrow"><td class="c-name">铜尺</td><td><span class="tag tag-道具">道具</span></td><td class="c-ch">第 1 章</td><td>东街长桌上压纸的尺</td><td class="c-rel">东街、公共账册</td></tr><tr id="idx-13" class="idxrow"><td class="c-name">钝口纸刀</td><td><span class="tag tag-道具">道具</span></td><td class="c-ch">第 1 章</td><td>阿桉撕存根、压纸角用的刀</td><td class="c-rel">阿桉、存根</td></tr><tr id="idx-14" class="idxrow"><td class="c-name">手套</td><td><span class="tag tag-道具">道具</span></td><td class="c-ch">第 1 章</td><td>钟叔从不摘下，遮住空白的掌心</td><td class="c-rel">钟叔、旧钟楼</td></tr><tr id="idx-15" class="idxrow"><td class="c-name">木牌</td><td><span class="tag tag-道具">道具</span></td><td class="c-ch">第 2 章</td><td>刻着编号，决定谁开哪个柜</td><td class="c-rel">小满、寄存处、十七号柜</td></tr><tr id="idx-16" class="idxrow"><td class="c-name">半片旧纸</td><td><span class="tag tag-道具">道具</span></td><td class="c-ch">第 2 章</td><td>撕角存根，只剩半个木字，压在纸上沿</td><td class="c-rel">阿桉、存根、寄存处</td></tr><tr id="idx-17" class="idxrow"><td class="c-name">薄账册</td><td><span class="tag tag-道具">道具</span></td><td class="c-ch">第 3 章</td><td>钟叔的账册，抄有沈砚那句问话</td><td class="c-rel">钟叔、抄写、沈砚</td></tr><tr id="idx-18" class="idxrow"><td class="c-name">条目</td><td><span class="tag tag-术语">术语</span></td><td class="c-ch">第 1 章</td><td>写进账册的一条话，每天只准一条</td><td class="c-rel">公共账册、划掉</td></tr><tr id="idx-19" class="idxrow"><td class="c-name">划掉</td><td><span class="tag tag-术语">术语</span></td><td class="c-ch">第 2 章</td><td>抹去条目，不可恢复</td><td class="c-rel">条目、抄写</td></tr><tr id="idx-20" class="idxrow"><td class="c-name">抄写</td><td><span class="tag tag-术语">术语</span></td><td class="c-ch">第 2 章</td><td>把别人划掉的条目重抄一次，只用一次</td><td class="c-rel">阿桉、划掉、存根</td></tr><tr id="idx-21" class="idxrow"><td class="c-name">寄存</td><td><span class="tag tag-术语">术语</span></td><td class="c-ch">第 2 章</td><td>把账页交给寄存处保管，不涉交换</td><td class="c-rel">寄存处、小满</td></tr><tr id="idx-22" class="idxrow"><td class="c-name">存根</td><td><span class="tag tag-术语">术语</span></td><td class="c-ch">第 1 章</td><td>抄写时撕下的纸角，作凭据</td><td class="c-rel">半片旧纸、抄写</td></tr><tr id="idx-23" class="idxrow"><td class="c-name">换页</td><td><span class="tag tag-术语">术语</span></td><td class="c-ch">第 1 章</td><td>每周一清晨给公共账册换新的一页</td><td class="c-rel">公共账册、沈砚、东街</td></tr><tr id="idx-24" class="idxrow"><td class="c-name">三点十七分</td><td><span class="tag tag-术语">术语</span></td><td class="c-ch">第 1 章</td><td>钟停住的时刻</td><td class="c-rel">旧钟楼、钟叔</td></tr></tbody></table></div>
+    <h2>使用说明</h2>
+    <p>索引不是装饰。它让「二刷」有落点：任何一个人名、地点、物件、术语，都能回到它第一次出现的章节；关联条目给出同一场景里互相牵连的其它名字。</p>
+  </div>
+</section>
+
+<section class="panel" id="audit">
+  <div class="chapter">
+    <h1 class="chtitle">连续性校对表</h1>
+    <p class="small">按六类检查项（人物 / 时间 / 道具 / 地点 / 术语 / 硬设定）逐条核验三章正文，共 15 行记录：8 处问题全部修订，7 项通过。</p>
+<div class="tbl"><table><thead><tr><th>﻿编号</th><th>类别</th><th>章号</th><th>原句摘录</th><th>违反的规则编号</th><th>修订建议</th><th>是否已修订</th><th>修订后原文</th></tr></thead><tbody><tr><td>P01</td><td>术语</td><td>第3章</td><td>小满说「柜里少了半张」而前文一直称之为「半片」旧纸</td><td>检查项-术语同名同义</td><td>同一物件统一命名为「半片毛边旧纸（撕角存根）」 其余一律改为「一角」</td><td>是</td><td>小满说「柜里少了一角」</td></tr><tr><td>P02</td><td>硬设定</td><td>第1章</td><td>沈砚站在原地 听见钟摆里有极轻的一声 像有人用指甲碰了一下铜</td><td>H3 与负面约束3（钟不得无故自响）</td><td>删除该句 明确钟未响 指针未动</td><td>是</td><td>沈砚站在原地等了一会儿 钟楼里什么声音也没有 指针没有动</td></tr><tr><td>P03</td><td>时间</td><td>第3章</td><td>沈砚翻开账册 今天那一行还在：我不</td><td>H3/检查项-章末与下章开头（「我不」写于周四 周五尚未落笔）</td><td>改为「最新的一格还是昨天那一行」并补一句「今天的还没有写」</td><td>是</td><td>最新的一格还是昨天那一行：我不 今天的还没有写</td></tr><tr><td>P04</td><td>人物</td><td>第2章</td><td>（初稿场景3无阿桉出场）大纲2-3列明出场人物含阿桉</td><td>检查项-人物出场一致性</td><td>补入阿桉在队中 与她两句台词 交代她每周来寄存纸街条目</td><td>是</td><td>队尾前面站着阿桉 她手里也捏着一块木牌 牌角磨圆了</td></tr><tr><td>P05</td><td>道具</td><td>第3章</td><td>沈砚把铜钥匙插回柜锁 锁咬住了 他没有拔 那半片旧纸他交给了阿桉</td><td>H4/检查项-道具状态变化（钥匙已锁死 无法再开柜归还账页）</td><td>调整动作顺序 先由小满关柜 阿桉归还账页 再由沈砚把钥匙推进锁孔不拔</td><td>是</td><td>小满关上柜门 沈砚把铜钥匙插回锁孔 往里推了一下 锁咬住了 他没有拔</td></tr><tr><td>P06</td><td>硬设定</td><td>第2章</td><td>阿桉说「一个人一辈子只抄得准一次」</td><td>H4（一次的限制针对被划掉的条目 不针对人）</td><td>限定到条目 改为「一条只抄得准一次」 否则第3章再抄钟叔之名即自相矛盾</td><td>是</td><td>阿桉说「一条只抄得准一次。抄过的那一条 不能再抄。」</td></tr><tr><td>P07</td><td>硬设定</td><td>第3章</td><td>（初稿缺沈砚原句被抄入钟叔账册的物证）F2 回收不完整</td><td>检查项-伏笔闭合</td><td>补入钟叔取出薄账册 展示阿桉慢笔抄下的「我想知道钟为什么停」</td><td>是</td><td>钟叔从外套里取出一本薄账册 册子上有一行字：我想知道钟为什么停</td></tr><tr><td>P08</td><td>硬设定</td><td>第1章</td><td>写完他数了一遍 二十一个字（未给条目原文 无法核验字数）</td><td>H1/检查项-条目可核验</td><td>补出条目原文 并按字面复核为连标点21字</td><td>是</td><td>东街换页 昨日最后一格是空的 我没有补（连标点共21字）</td></tr><tr><td>C01</td><td>人物</td><td>全篇</td><td>（通过）四人随身道具逐章核对</td><td>检查项-随身道具</td><td>铜钥匙 钝口纸刀 旧手套 木牌 四件全篇未无故消失或变更</td><td>通过</td><td>—</td></tr><tr><td>C02</td><td>人物</td><td>全篇</td><td>（通过）具名人物清点</td><td>不得新增第5位具名人物</td><td>全篇仅沈砚 阿桉 钟叔 小满 4 人 另有 3 处未具名路人 不计入</td><td>通过</td><td>—</td></tr><tr><td>C03</td><td>时间</td><td>第1—3章</td><td>（通过）章末与下章开头衔接</td><td>检查项-章末与下章开头</td><td>第1章止于周三上午 第2章起于周四清晨 第2章止于周四傍晚 第3章起于周五傍晚 无回跳</td><td>通过</td><td>—</td></tr><tr><td>C04</td><td>道具</td><td>全篇</td><td>（通过）道具状态变化后的使用</td><td>检查项-道具状态变化</td><td>旧纸归还后不再出现 钥匙留在柜锁后不再使用 手套摘下后重新戴回 均无违规复用</td><td>通过</td><td>—</td></tr><tr><td>C05</td><td>地点</td><td>全篇</td><td>（通过）场景地点与大纲逐条比对</td><td>检查项-场景一致性</td><td>9 个场景地点与 04_章节大纲.csv 完全一致 无错位</td><td>通过</td><td>—</td></tr><tr><td>C06</td><td>术语</td><td>全篇</td><td>（通过）核心术语写法统一</td><td>检查项-术语同名同义</td><td>条目 划掉 抄写 寄存 存根 换页 内柜 七词全篇同写同义</td><td>通过</td><td>—</td></tr><tr><td>C07</td><td>硬设定</td><td>全篇</td><td>（通过）H1—H5 与 3 条负面约束逐条比对</td><td>硬设定</td><td>全篇无第二条同时留存 无自响 无复原 无货币语 寄存处仅周五傍晚开启</td><td>通过</td><td>—</td></tr></tbody></table></div>
+  </div>
+</section>
+
+<section class="panel" id="sales">
+  <div class="chapter">
+    <h1 class="chtitle">IP 商业化与销售方案</h1>
+    <p class="small">课堂推演：价格、转化率与收入均为假设值，不代表真实成交，也不得对外宣称。</p>
+<blockquote>说明：本方案是<strong>课程作业的配套商业化推演</strong>，所有价格、转化率、收入数字均为<strong>课堂假设值</strong>，不是真实成交数据，也不代表任何平台的实际报价。世界观与人物均为课堂虚构，不涉及真实机构与真实人物。<br>全部数字口径统一：人民币元，含税口径不区分；转化率按「曝光 → 阅读 → 付费」三段拆开算。</blockquote>
+<hr class="rule">
+<h2>一、一句话定位</h2>
+<p><strong>「一个把选择记进账册的城，和一个必须划掉自己那条的人。」</strong> —— 3 章、3600 字以内的<strong>概念型短篇 + 可检索设定集</strong>，主打「一次读完、读完想讨论、讨论完想收藏」。</p>
+<div class="tbl"><table><thead><tr><th>项</th><th>内容</th></tr></thead><tbody><tr><td>品类</td><td>幻想 / 概念悬疑 / 轻文学（非玄幻打怪、非言情）</td></tr><tr><td>篇幅</td><td>正文 3 章 ≈ 3500 字；设定集 + 索引 ≈ 25 条词条</td></tr><tr><td>阅读时长</td><td>18—25 分钟（一次通勤可读完）</td></tr><tr><td>内容资产</td><td>5 条硬设定、4 位人物、9 个场景、4 条伏笔、25 条索引词条、1 张封面</td></tr><tr><td>可延展性</td><td>高：规则明确、场景封闭、人物少，天然适配有声、短剧、剧本杀、桌面游戏</td></tr><tr><td>差异化钩子</td><td>「写一条必须划掉一条」——把「选择的代价」做成了可玩的规则，而不是背景设定</td></tr></tbody></table></div>
+<p><strong>为什么这个资产能卖：</strong></p>
+<ol><li><strong>规则即卖点。</strong> 读者读完能立刻复述出 H1（每天只能写一条）——可复述的规则就是可传播的梗。</li><li><strong>短。</strong> 3500 字，试读成本极低，适合「先看再买」的付费阅读逻辑。</li><li><strong>可检索。</strong> 25 条索引让「二刷」有理由，也让设定集本身成为独立商品。</li><li><strong>可改编。</strong> 4 人、5 个场所、1 次钟响——舞台剧/剧本杀的最小成本结构。</li></ol>
+<hr class="rule">
+<h2>二、目标读者画像</h2>
+<div class="tbl"><table><thead><tr><th>画像</th><th>代号</th><th>年龄</th><th>主要平台</th><th>内容偏好</th><th>付费习惯</th><th>触达话术</th></tr></thead><tbody><tr><td>通勤读者</td><td>R1</td><td>22—30</td><td>微信读书 / 番茄 / 知乎</td><td>短、概念强、结尾有余味</td><td>单本 1—6 元不犹豫；对「9.9 元包月」敏感</td><td>「20 分钟读完，结尾会让你想再看一遍第一章」</td></tr><tr><td>设定党</td><td>R2</td><td>18—26</td><td>B 站 / 小红书 / Lofter</td><td>世界观规则、设定集、考据</td><td>愿为「设定集/美术集」单付 19—39 元</td><td>「5 条硬设定，每条都能在正文里找到对应的代价」</td></tr><tr><td>创作学习者</td><td>R3</td><td>20—35</td><td>公众号 / 知识星球 / 小红书</td><td>方法、模板、可复用流程</td><td>愿为「模板 + 案例」付 29—99 元</td><td>「这不是一篇小说，是一套可复用的写作工程流程」</td></tr><tr><td>机构采购</td><td>R4</td><td>—</td><td>校园社团 / 语文教研 / 剧本杀店主</td><td>短、无版权争议、可改编</td><td>按场次或按授权付费</td><td>「4 人本，1 小时，零道具成本」</td></tr></tbody></table></div>
+<p><strong>主攻顺序：R3 → R2 → R1 → R4。</strong> 先用「创作流程」吸引 R3（他们自带传播），再用设定集承接 R2（客单价最高），最后用低价短篇承接 R1（拉总量）。</p>
+<hr class="rule">
+<h2>三、竞品与差异</h2>
+<div class="tbl"><table><thead><tr><th>维度</th><th>常见 AI 小说作品集</th><th>常见网文短篇</th><th>本作</th></tr></thead><tbody><tr><td>卖点</td><td>「我用 AI 写了 10 万字」</td><td>情节爽感</td><td>「规则—代价—回收」闭环，可验证</td></tr><tr><td>交付物</td><td>只有正文</td><td>只有正文</td><td>正文 + 设定集 + 索引 + 校对表 + 阅读版</td></tr><tr><td>可信度</td><td>低（无法验证一致性）</td><td>—</td><td>高（连续性校对表可逐条核）</td></tr><tr><td>复购理由</td><td>无</td><td>追更</td><td>二刷考据 / 设定集 / 改编</td></tr><tr><td>价格带</td><td>免费</td><td>0.05—0.1 元/千字</td><td>免费试读 + 6 / 19 / 39 元三档</td></tr></tbody></table></div>
+<p><strong>结论：</strong> 不与「爽文」比长度，与「设定集」比结构强度。<strong>把「可核对」当成商品属性卖。</strong></p>
+<hr class="rule">
+<h2>四、产品矩阵与定价（7 个 SKU）</h2>
+<div class="tbl"><table><thead><tr><th>SKU</th><th>名称</th><th>内容</th><th>形态</th><th>定价（假设）</th><th>毛利率估算</th><th>作用</th></tr></thead><tbody><tr><td>P0</td><td>试读版</td><td>第 1 章全文 + 封面 + 索引前 8 条</td><td>网页 / PDF</td><td>0 元</td><td>—</td><td>获客，换取关注/邮箱</td></tr><tr><td>P1</td><td>电子书标准版</td><td>三章正文 + 设定集 + 索引 + 阅读版 HTML</td><td>单文件 HTML + PDF</td><td><strong>6 元</strong></td><td>≈95%</td><td>走量，主力转化</td></tr><tr><td>P2</td><td>设定集典藏版</td><td>P1 + 25 条索引详注 + 9 场景地图 + 4 条伏笔拆解</td><td>PDF（可打印）</td><td><strong>19 元</strong></td><td>≈95%</td><td>提客单价，R2 主攻</td></tr><tr><td>P3</td><td>创作流程包</td><td>P2 + 提示词库 9 条 + 连续性检查表 + 验收量表 + 制作说明</td><td>ZIP + 视频 30 分钟</td><td><strong>39 元</strong></td><td>≈90%</td><td>面向 R3，最高毛利</td></tr><tr><td>P4</td><td>有声短篇</td><td>3 章 ≈ 22 分钟，单人播讲</td><td>音频（MP3 / 平台专栏）</td><td><strong>9.9 元</strong> 或随 P1 赠</td><td>≈70%（分成后）</td><td>场景延伸，通勤场景</td></tr><tr><td>P5</td><td>舞台/剧本杀授权</td><td>4 人本，单场 60 分钟，含主持人手册</td><td>授权 + 物料包</td><td><strong>299 元/店/年</strong> 或 30 元/场</td><td>≈85%</td><td>面向 R4，批量复制</td></tr><tr><td>P6</td><td>改编授权</td><td>短剧 / 漫改 / 广播剧的改编权</td><td>合同授权</td><td><strong>面议，起谈 8000 元 + 分成 8%—15%</strong></td><td>—</td><td>长尾，不做主力</td></tr></tbody></table></div>
+<p><strong>定价逻辑：</strong></p>
+<ul><li><strong>锚定：</strong> 主推 P2（19 元），让 P1（6 元）显得便宜、P3（39 元）显得超值。三档价差按 1 : 3.2 : 6.5 布置，避免「中间档没人选」。</li><li><strong>阶梯：</strong> 首发 72 小时 P1 定价 3 元（限 500 份），之后回 6 元；P3 前 100 份 29 元。</li><li><strong>打包：</strong> P1+P2 合买 21 元（省 4 元），P2+P3 合买 49 元（省 9 元），提高客单价而不降价。</li><li><strong>赠品只赠不加价：</strong> 有声（P4）随 P2 赠送，避免自己打自己。</li></ul>
+<hr class="rule">
+<h2>五、渠道矩阵</h2>
+<div class="tbl"><table><thead><tr><th>渠道</th><th>类型</th><th>具体动作</th><th>目标</th><th>关键指标</th><th>备注</th></tr></thead><tbody><tr><td>微信读书 / 番茄</td><td>平台分发</td><td>上架 P0 试读，末尾放 P1 购买入口</td><td>拿平台自然流量</td><td>试读完成率 ≥45%</td><td>需按平台规则签约，抽成以平台为准</td></tr><tr><td>小红书</td><td>种草</td><td>12 篇图文：封面拆解、5 条硬设定、4 条伏笔、写作流程</td><td>拉 R2/R3</td><td>单篇收藏 ≥300</td><td>图必须原创（本作封面可复用）</td></tr><tr><td>B 站</td><td>深度</td><td>1 条 8 分钟「我用一条规则写完三章」过程视频</td><td>建立可信度</td><td>完播率 ≥35%</td><td>视频里露出校对表，最有说服力</td></tr><tr><td>公众号</td><td>私域沉淀</td><td>3 篇：设定集节选、创作复盘、索引彩蛋</td><td>沉淀可反复触达的用户</td><td>关注转化 ≥8%</td><td>文末固定 P1/P3 入口</td></tr><tr><td>知乎</td><td>长尾搜索</td><td>回答「如何用 AI 写一篇结构完整的小说」等 5 问</td><td>长期搜索流量</td><td>单答赞同 ≥200</td><td>回答里给可复制的检查表</td></tr><tr><td>私域社群</td><td>复购</td><td>读者群，每周一次「条目接龙」互动</td><td>复购 + UGC</td><td>群活跃 ≥25%</td><td>互动即内容，反哺第二部</td></tr><tr><td>线下（校园/书店）</td><td>体验</td><td>15 张「条目卡」+ 二维码，扫码领 P0</td><td>场景化获客</td><td>扫码率 ≥20%</td><td>卡面印 H1，一看就懂</td></tr><tr><td>剧本杀店</td><td>B 端</td><td>寄送 P5 试玩包（1 场免费）</td><td>试点 10 家</td><td>复购 ≥3 家</td><td>免费一场换真实反馈</td></tr></tbody></table></div>
+<p><strong>渠道优先级：</strong> 小红书（低成本起量）→ 知乎（长尾）→ 公众号（沉淀）→ B 站（信任）→ 平台（放量）→ 线下（场景）。</p>
+<hr class="rule">
+<h2>六、上线节奏（90 天）</h2>
+<div class="tbl"><table><thead><tr><th>阶段</th><th>时间</th><th>关键动作</th><th>交付物</th><th>目标</th></tr></thead><tbody><tr><td>T-14 天</td><td>预热</td><td>发布封面 + 一句规则「每天只能写一条」，不解释</td><td>3 张图</td><td>收藏 1000</td></tr><tr><td>T-7 天</td><td>蓄水</td><td>开放 P0 试读，收邮箱</td><td>落地页</td><td>名单 300</td></tr><tr><td>D0</td><td>首发</td><td>72 小时 3 元首发，社群开群</td><td>P1 上线</td><td>首日 100 单</td></tr><tr><td>D1—D7</td><td>口碑</td><td>每天发 1 条「设定考据」；收集 20 条读者提问</td><td>图文</td><td>评价 ≥30 条</td></tr><tr><td>D8—D21</td><td>提价</td><td>回 6 元；上线 P2 典藏版</td><td>P2 上线</td><td>累计 400 单</td></tr><tr><td>D22—D45</td><td>扩品</td><td>上线 P3 流程包 + P4 有声；B 站视频</td><td>P3/P4</td><td>客单价 ≥14 元</td></tr><tr><td>D46—D60</td><td>B 端</td><td>10 家剧本杀店免费试玩</td><td>P5 试玩包</td><td>签约 ≥3 家</td></tr><tr><td>D61—D90</td><td>长尾</td><td>知乎 5 问、公众号复盘、索引彩蛋活动</td><td>内容包</td><td>月自然流量 ≥5000</td></tr></tbody></table></div>
+<hr class="rule">
+<h2>七、内容营销素材（10 条可直接发的选题）</h2>
+<ol><li>「这个城没有钱，只有条目」——一条规则讲完世界观（配封面）。</li><li>「5 条硬设定，每条都在正文里留下了代价」——逐条对照表。</li><li>「我埋了 4 条伏笔，第 3 章全部回收」——伏笔表截图。</li><li>「第 1 章的 21 个字，是我数过的」——细节控向。</li><li>「阿桉为什么每天写自己的名字」——人物小传节选。</li><li>「钟响一次就够了」——结局解读。</li><li>「AI 写了一稿，我发现 8 处自相矛盾」——校对表前后对比（最有传播力）。</li><li>「一个物件被写成三种叫法」——术语统一的实操。</li><li>「3500 字，怎么做出 25 条索引」——索引方法论。</li><li>「4 个人、5 个场景、1 次钟响：为什么它适合改成剧本杀」。</li></ol>
+<hr class="rule">
+<h2>八、转化漏斗与测算（假设值）</h2>
+<div class="tbl"><table><thead><tr><th>环节</th><th>假设转化率</th><th>说明</th></tr></thead><tbody><tr><td>曝光 → 点开试读</td><td>8%</td><td>封面 + 一句规则的组合点击率</td></tr><tr><td>试读 → 读完第 1 章</td><td>55%</td><td>3500 字总量，第 1 章 1200 字</td></tr><tr><td>读完 → 留邮箱/关注</td><td>30%</td><td>文末给「索引彩蛋」作为交换</td></tr><tr><td>留资 → 付费（任一 SKU）</td><td>18%</td><td>私域 3 次触达后</td></tr><tr><td>付费 → 复购/升级</td><td>22%</td><td>读完 P1 后推 P2/P3</td></tr></tbody></table></div>
+<p><strong>三档情景（按 90 天累计曝光测算）：</strong></p>
+<div class="tbl"><table><thead><tr><th>情景</th><th>曝光</th><th>试读</th><th>留资</th><th>付费单数</th><th>客单价</th><th>收入</th><th>备注</th></tr></thead><tbody><tr><td>保守</td><td>50,000</td><td>4,000</td><td>1,200</td><td>216</td><td>12 元</td><td><strong>2,592 元</strong></td><td>只跑小红书 + 知乎</td></tr><tr><td>基准</td><td>150,000</td><td>12,000</td><td>3,600</td><td>648</td><td>15 元</td><td><strong>9,720 元</strong></td><td>加公众号 + 平台</td></tr><tr><td>乐观</td><td>400,000</td><td>32,000</td><td>9,600</td><td>1,728</td><td>18 元</td><td><strong>31,104 元</strong></td><td>加 B 站爆款 + 10 家 B 端</td></tr></tbody></table></div>
+<blockquote>以上全部为课堂推演，不含平台抽成、退款与税费；实际以真实数据为准，不得对外宣称。</blockquote>
+<hr class="rule">
+<h2>九、成本与投入（假设）</h2>
+<div class="tbl"><table><thead><tr><th>项目</th><th>单价</th><th>数量</th><th>小计</th><th>说明</th></tr></thead><tbody><tr><td>封面与版式</td><td>0 元</td><td>1</td><td>0</td><td>本地脚本绘制，无外包</td></tr><tr><td>有声录制</td><td>200 元/章</td><td>3</td><td>600 元</td><td>兼职播讲，含 2 次返工</td></tr><tr><td>落地页与支付</td><td>0—300 元/年</td><td>1</td><td>300 元</td><td>静态托管免费额度内</td></tr><tr><td>小红书/B 站投放</td><td>0（自然流量为主）</td><td>—</td><td>0</td><td>前 90 天不投付费</td></tr><tr><td>剧本杀试玩包</td><td>25 元/份</td><td>10</td><td>250 元</td><td>打印 + 邮寄</td></tr><tr><td>合计</td><td>—</td><td>—</td><td><strong>约 1,150 元</strong></td><td>基准情景下 ROI ≈ 8.5 倍</td></tr></tbody></table></div>
+<hr class="rule">
+<h2>十、版权与合同要点（P5/P6 必看）</h2>
+<div class="tbl"><table><thead><tr><th>条款</th><th>建议</th><th>原因</th></tr></thead><tbody><tr><td>授权范围</td><td>明确「仅限门店现场使用，不得录制传播」</td><td>防止一场授权被无限复制</td></tr><tr><td>授权期限</td><td>1 年，到期续签</td><td>保留调价空间</td></tr><tr><td>署名</td><td>每场物料须标注作者与作品名</td><td>品牌沉淀</td></tr><tr><td>改编权</td><td>与表演权分开授权，不打包</td><td>短剧改编价远高于门店表演</td></tr><tr><td>分成</td><td>改编收入分成 8%—15%，保底 + 分成</td><td>保底覆盖时间成本</td></tr><tr><td>AI 使用声明</td><td>合同中附「AI 参与创作说明」</td><td>平台与买方合规要求</td></tr><tr><td>争议解决</td><td>约定仲裁地</td><td>降低维权成本</td></tr></tbody></table></div>
+<hr class="rule">
+<h2>十一、风险与应对</h2>
+<div class="tbl"><table><thead><tr><th>风险</th><th>概率</th><th>影响</th><th>应对</th></tr></thead><tbody><tr><td>「AI 写的」被质疑质量</td><td>高</td><td>中</td><td>主动公开校对表与修订记录，把过程当卖点</td></tr><tr><td>平台判定为低质/重复内容</td><td>中</td><td>高</td><td>保证原创设定与手写校对痕迹；不同平台差异化改写简介</td></tr><tr><td>定价过低导致不赚钱</td><td>中</td><td>中</td><td>用 P2/P3 拉客单价，P1 只做入口</td></tr><tr><td>读者觉得「太短不值 6 元」</td><td>高</td><td>中</td><td>6 元绑定「设定集 + 索引 + 阅读版」，卖结构不卖字数</td></tr><tr><td>B 端试玩后不签约</td><td>高</td><td>低</td><td>免费场换反馈与口碑，不追单场收入</td></tr><tr><td>设定被指抄袭某作品</td><td>低</td><td>高</td><td>保留创作过程文件与时间戳；设定均为课堂原创</td></tr></tbody></table></div>
+<hr class="rule">
+<h2>十二、每周数据看板（12 项）</h2>
+<div class="tbl"><table><thead><tr><th>#</th><th>指标</th><th>口径</th><th>健康线</th></tr></thead><tbody><tr><td>1</td><td>曝光量</td><td>各渠道合计</td><td>周增 ≥20%</td></tr><tr><td>2</td><td>试读点开率</td><td>点开/曝光</td><td>≥8%</td></tr><tr><td>3</td><td>首章完读率</td><td>读完/点开</td><td>≥55%</td></tr><tr><td>4</td><td>留资率</td><td>留邮箱/完读</td><td>≥30%</td></tr><tr><td>5</td><td>付费转化率</td><td>付费/留资</td><td>≥18%</td></tr><tr><td>6</td><td>客单价</td><td>收入/付费单数</td><td>≥14 元</td></tr><tr><td>7</td><td>退款率</td><td>退款/付费</td><td>≤3%</td></tr><tr><td>8</td><td>复购率</td><td>二次购买/付费</td><td>≥20%</td></tr><tr><td>9</td><td>内容互动率</td><td>赞藏评/曝光</td><td>≥4%</td></tr><tr><td>10</td><td>单渠道 CAC</td><td>投入/新增付费</td><td>≤8 元</td></tr><tr><td>11</td><td>B 端签约数</td><td>累计</td><td>90 天 ≥3</td></tr><tr><td>12</td><td>自然搜索占比</td><td>搜索来源/总曝光</td><td>≥25%</td></tr></tbody></table></div>
+<hr class="rule">
+<h2>十三、里程碑验收</h2>
+<div class="tbl"><table><thead><tr><th>里程碑</th><th>时间</th><th>验收标准</th></tr></thead><tbody><tr><td>M1 可售</td><td>D0</td><td>P1 上线，支付可走通，试读页无死链</td></tr><tr><td>M2 有口碑</td><td>D7</td><td>≥30 条真实评价，平均 ≥4.5 分</td></tr><tr><td>M3 有结构</td><td>D45</td><td>P1/P2/P3/P4 四档齐全，客单价 ≥14 元</td></tr><tr><td>M4 有 B 端</td><td>D90</td><td>≥3 家门店签约，≥1 条改编意向</td></tr><tr><td>M5 可复制</td><td>D90</td><td>形成《第二部选题包》，同一流程可复用</td></tr></tbody></table></div>
+<hr class="rule">
+<h2>十四、一句话总结</h2>
+<p><strong>这篇小说卖的不是 3500 字，是「一套能自查、能二刷、能改编的结构」。</strong> 定价卖结构，渠道卖规则，内容卖过程。</p>
+  </div>
+</section>
+
+<section class="panel" id="notes">
+  <div class="chapter">
+    <h1 class="chtitle">制作说明</h1>
+<blockquote>本文件如实记录工具、能力编号、逐步产出、字数统计、校对结果、<strong>未启用能力与替代路径</strong>，以及自评得分。凡未实际运行的能力，一律标注「未启用」，不写成已上线结果。</blockquote>
+<h2>一、基本信息</h2>
+<div class="tbl"><table><thead><tr><th>项</th><th>内容</th></tr></thead><tbody><tr><td>作品名</td><td>《账本城》</td></tr><tr><td>类型</td><td>幻想 / 概念悬疑短篇 + 设定集（课堂虚构）</td></tr><tr><td>篇幅</td><td>三章正文 3575 字（汉字）；索引 25 条；硬设定 5 条；人物 4 位；场景 9 个；伏笔 4 条</td></tr><tr><td>主要工具</td><td>WorkBuddy（对话与长文写作、本地文件读写、命令执行、网页构建）</td></tr><tr><td>制作方式</td><td>单会话完成：设定层 → 正文层 → 校对层 → 成品层，每层落盘为文件后再进下一层</td></tr><tr><td>AI 参与声明</td><td><strong>全文由 AI 生成，经人工设定约束与逐条校对修订</strong>；不宣称全文为人工独立创作</td></tr><tr><td>素材来源</td><td>课堂虚构素材包 9 份（世界观、人物模板、大纲模板、风格样章、检查表、提示词库、封面提示词、验收量表、README），不使用真实人物、真实机构与真实作品情节</td></tr></tbody></table></div>
+<h2>二、能力清单与逐步产出</h2>
+<div class="tbl"><table><thead><tr><th>步骤</th><th>能力编号</th><th>能力名称</th><th>输入</th><th>实际产出</th><th>状态</th></tr></thead><tbody><tr><td>1 素材核对与风格基线</td><td>WB-CHAT</td><td>对话与长文写作</td><td>素材包 9 份、04_风格样章.md</td><td>00_风格基线.md（8 项风格特征 + 10 个禁用词 + 2 条硬规则 + 9/9 核对表）</td><td>已启用</td></tr><tr><td>2 固化世界观硬设定</td><td>WB-FILE</td><td>本地文件读写</td><td>01_世界观设定包.md</td><td>01_世界观设定集.md（H1—H5 + 检查方法 + 地理表 + 6 行时间线 + 3 条负面约束）</td><td>已启用</td></tr><tr><td>3 人物小传与关系图</td><td>WB-FILE</td><td>本地文件读写</td><td>02_人物小传模板.csv、设定集</td><td>02_人物小传.csv（4 人 9 字段）、03_人物关系矩阵.csv（4×4）</td><td>已启用</td></tr><tr><td>4 三章大纲与伏笔回收表</td><td>WB-FILE</td><td>本地文件读写</td><td>03_章节大纲模板.csv、设定集、人物</td><td>04_章节大纲.csv（9 场景）、05_伏笔回收表.csv（F1—F4 全闭合）</td><td>已启用</td></tr><tr><td>5 逐章生成正文</td><td>WB-CHAT</td><td>对话与长文写作</td><td>风格基线、设定集、人物、该章大纲、伏笔表</td><td>06_正文_三章.md（3 章，各 ≥800 字，每章含状态登记表）</td><td>已启用</td></tr><tr><td>6 连续性校对与修订</td><td>WB-CMD</td><td>命令执行与数据处理</td><td>三章正文、05_连续性检查表.csv、设定集、大纲</td><td>07_连续性校对表.csv（15 行：8 处问题 + 7 项通过）、正文实际改稿</td><td>已启用</td></tr><tr><td>7 人物与术语索引</td><td>WB-FILE / WB-CMD</td><td>本地文件读写 + 脚本校验</td><td>修订后的正文</td><td>08_索引.json（25 条，可解析、related 100% 命中）、09_设定附录.md</td><td>已启用</td></tr><tr><td>8 封面与单文件阅读版</td><td>WB-HTML</td><td>网页与应用构建、预览</td><td>正文、设定集、附录、索引、封面提示词</td><td>10_封面.png、11_阅读版.html（目录/切换/检索/封面降级）</td><td>已启用</td></tr><tr><td>9 自检与打包</td><td>WB-CMD</td><td>命令执行与数据处理</td><td>成果目录、08_验收量表.csv</td><td>12_制作说明.md、本文件、ZIP 包</td><td>已启用</td></tr></tbody></table></div>
+<h2>三、未启用能力与替代路径（如实标注）</h2>
+<div class="tbl"><table><thead><tr><th>能力</th><th>状态</th><th>原因</th><th>替代路径</th><th>影响</th></tr></thead><tbody><tr><td>WorkBuddy 图像生成（AI 出图）</td><td><strong>未启用</strong></td><td>两次调用均返回 <code>fetch failed</code>，未取得任何生成结果</td><td>按 <code>07_封面提示词.md</code> 的同一构图（下半账册色块 + 静止钟摆 + 斜长阴影 + 上方三分之一留白），用本地脚本（Pillow）绘制 <code>10_封面.png</code>；书名由本地字库绘制，不经图像模型，故无错字风险</td><td>封面为「脚本绘制封面」，非 AI 生成图；量规第 5 项按替代路径等量评价</td></tr><tr><td>联网检索</td><td><strong>未启用</strong></td><td>本课默认不需要联网，课件的事实性数字保留原口径</td><td>课程方向说明中的行业数据未复述进正文，避免以未核验数据充当事实</td><td>无</td></tr><tr><td>第三方平台预览</td><td><strong>未启用</strong></td><td>仅在本地生成静态文件；公网展示走独立发布流程</td><td>单文件 HTML 零依赖，可本地双击打开，亦可直接部署为静态页</td><td>无</td></tr><tr><td>音频 / 视频</td><td><strong>未启用</strong></td><td>不在本课交付清单内</td><td>商业化方案中列为 P4，标注为待开发</td><td>无</td></tr></tbody></table></div>
+<h2>四、字数与结构统计（脚本核对）</h2>
+<div class="tbl"><table><thead><tr><th>章</th><th>汉字数</th><th>连标点非空白字符</th><th>台词处数</th><th>场景数</th><th>状态登记表</th><th>达标线</th></tr></thead><tbody><tr><td>第一章 换页</td><td>1230</td><td>1492</td><td>37</td><td>3</td><td>有（4 人）</td><td>≥800 字</td></tr><tr><td>第二章 排队</td><td>1124</td><td>1366</td><td>37</td><td>3</td><td>有（4 人）</td><td>≥800 字</td></tr><tr><td>第三章 钟响</td><td>1221</td><td>1450</td><td>21</td><td>3</td><td>有（4 人）</td><td>≥800 字</td></tr><tr><td><strong>合计</strong></td><td><strong>3575</strong></td><td><strong>4308</strong></td><td><strong>95</strong></td><td><strong>9</strong></td><td><strong>3/3</strong></td><td>—</td></tr></tbody></table></div>
+<p><strong>禁用词检测：</strong> 按 <code>00_风格基线.md</code> 的 10 个禁用词与 H5 的 7 个货币类词（购买 / 付款 / 价格 / 钱 / 买卖 / 货币 / 收费）全文检索，<strong>命中 0 次</strong>。
+<strong>感叹号：</strong> 全篇 0 个（基线规定不用感叹号堆叠）。</p>
+<h2>五、连续性校对结果</h2>
+<div class="tbl"><table><thead><tr><th>项</th><th>数值</th></tr></thead><tbody><tr><td>检查类别</td><td>6 类（人物 / 时间 / 道具 / 地点 / 术语 / 硬设定）</td></tr><tr><td>记录行数</td><td>15 行（8 处问题 + 7 项通过）</td></tr><tr><td>发现问题</td><td>8 处</td></tr><tr><td>已修订</td><td>8 处（修订率 100%）</td></tr><tr><td>最严重的一处</td><td>第 1 章章末原写「钟摆里有极轻的一声」，易被读成钟自响，直接违反 H3 与负面约束 3 —— 已删改为「什么声音也没有，指针没有动」</td></tr><tr><td>最隐蔽的一处</td><td>第 2 章原写阿桉「一辈子只抄得准一次」，与第 3 章她再抄钟叔之名冲突 —— 已把限制限定到「条目」而非「人」</td></tr></tbody></table></div>
+<p><strong>一句话说明：连续性校对共发现并修订 8 处矛盾。</strong></p>
+<h2>六、索引与阅读版自检</h2>
+<div class="tbl"><table><thead><tr><th>检查项</th><th>结果</th></tr></thead><tbody><tr><td><code>08_索引.json</code> 可被标准 JSON 解析器解析</td><td>通过（<code>json.load</code> 无异常）</td></tr><tr><td><code>related</code> 中的名称全部存在于 <code>items</code></td><td>通过（25/25，命中率 100%）</td></tr><tr><td>条目是否全部来自正文</td><td>通过（逐条比对正文原文，无正文外条目）</td></tr><tr><td>释义长度 ≤30 字</td><td>通过（最长 17 字）</td></tr><tr><td>阅读版可打开、无乱码</td><td>通过（UTF-8 声明，中文正常）</td></tr><tr><td>三章与附录均有内容、无空白章节</td><td>通过（9 个面板，正文由 Markdown 编译注入）</td></tr><tr><td>目录切换</td><td>通过（左侧 9 项，点击切换面板 + 更新地址栏 hash）</td></tr><tr><td>索引检索</td><td>通过（输入即筛，↑↓ 选择，回车跳到附录条目并高亮 2.6 秒）</td></tr><tr><td>封面缺图降级</td><td>通过（<code>img.onerror</code> 与 <code>naturalWidth===0</code> 双重判断，降级为纯 CSS 同构图封面）</td></tr></tbody></table></div>
+<h2>七、自评得分表（100 分制）</h2>
+<div class="tbl"><table><thead><tr><th>评价项目</th><th>满分</th><th>自评</th><th>扣分理由</th></tr></thead><tbody><tr><td>设定集完整性</td><td>20</td><td>19</td><td>H1—H5、检查方法、地理表、6 行时间线、3 条负面约束齐全，且未超出原始设定包；时间线仅沿用设定包 6 点，未细化到事件级，扣 1 分</td></tr><tr><td>人物与大纲</td><td>15</td><td>14</td><td>4 人 9 字段齐全、4×4 矩阵、9 场景、F1—F4 全闭合；关系矩阵有两处刻意非对称，正文体现不足，扣 1 分</td></tr><tr><td>正文质量与风格一致</td><td>25</td><td>23</td><td>三章均 ≥1100 字、禁用词 0、台词 21—37 处；第 3 章钟响前的铺垫稍薄，扣 2 分</td></tr><tr><td>连续性与校对</td><td>20</td><td>19</td><td>6 类全覆盖、8 处问题定位到章号与原句并全部修订、3 章状态登记表齐全；校对以自查为主，未做第三方交叉核对，扣 1 分</td></tr><tr><td>索引与阅读版</td><td>10</td><td>9</td><td>JSON 可解析且 related 全命中、阅读版四项功能可用、封面存在；检索仅支持中文子串，不支持拼音，扣 1 分</td></tr><tr><td>制作说明与合规</td><td>10</td><td>9</td><td>能力清单、逐步产出、字数统计、未启用能力如实标注、素材来源与复现摘要齐全；图像生成未启用，封面为替代方案，扣 1 分</td></tr><tr><td><strong>合计</strong></td><td><strong>100</strong></td><td><strong>93</strong></td><td>—</td></tr></tbody></table></div>
+<h2>八、成果文件树核对表</h2>
+<div class="tbl"><table><thead><tr><th>编号</th><th>文件</th><th>规格</th><th>核对</th></tr></thead><tbody><tr><td>00</td><td>00_风格基线.md</td><td>8 项风格特征 + 10 个禁用词 + 2 条硬规则 + 9/9 素材核对表</td><td>有</td></tr><tr><td>01</td><td>01_世界观设定集.md</td><td>H1—H5 及检查方法、地理表 5 处、时间线 6 行、负面约束 3 条</td><td>有</td></tr><tr><td>02</td><td>02_人物小传.csv</td><td>5 行（含表头）× 9 列，4 位人物</td><td>有</td></tr><tr><td>03</td><td>03_人物关系矩阵.csv</td><td>5 行 × 5 列，4×4 有效值</td><td>有</td></tr><tr><td>04</td><td>04_章节大纲.csv</td><td>10 行（含表头）× 9 列，9 场景</td><td>有</td></tr><tr><td>05</td><td>05_伏笔回收表.csv</td><td>5 行（含表头）× 8 列，F1—F4</td><td>有</td></tr><tr><td>06</td><td>06_正文_三章.md</td><td>三章 3575 字，3 张状态登记表，3 处字数标注</td><td>有</td></tr><tr><td>07</td><td>07_连续性校对表.csv</td><td>16 行（含表头）× 8 列</td><td>有</td></tr><tr><td>08</td><td>08_索引.json</td><td>25 条，可解析，related 全命中</td><td>有</td></tr><tr><td>09</td><td>09_设定附录.md</td><td>4 类分组 + 统计表</td><td>有</td></tr><tr><td>10</td><td>10_封面.png</td><td>1000×1500（2:3），脚本绘制</td><td>有</td></tr><tr><td>11</td><td>11_阅读版.html</td><td>单文件，零外部依赖，9 个面板</td><td>有</td></tr><tr><td>12</td><td>12_制作说明.md</td><td>本文件</td><td>有</td></tr><tr><td>13</td><td>13_IP商业化与销售方案.md</td><td>14 节，7 个 SKU，8 个渠道，3 档测算</td><td>有</td></tr></tbody></table></div>
+<h2>九、复现摘要（可直接照着再做一遍）</h2>
+<ol><li>解压素材包（注意 ZIP 内文件名为 GBK 编码，需按 GBK 解码后再解压，否则中文名乱码）。</li><li>读 <code>04_风格样章.md</code>，先写死基线卡（人称、句长、对话占比、段落长度、意象、禁用词、标点、2 条硬规则），后续每章整段贴回。</li><li>读 <code>01_世界观设定包.md</code>，把 H1—H5 逐条写成「规则原文 + 检查方法 + 违反样例」三列，再补 3 条负面约束。</li><li>人物表只用 4 人，每人绑定 1 条硬设定；关系矩阵取值限定为 信任/冲突/中立/未知。</li><li>大纲先定 9 场景与「结果状态」，再定伏笔编号；伏笔表必须能回答「在哪一场回收、怎么回收」。</li><li>正文一章一生成，写完立刻登记人物位置、随身道具、时间点；字数与台词数用脚本统计，不靠估计。</li><li>校对按 6 类逐条比对，<strong>先出问题清单，再改正文</strong>；没有问题的类别也要写「通过」行。</li><li>索引从正文抽，不补外部条目；<code>related</code> 必须回指 <code>items</code>，用脚本校验。</li><li>封面优先用图像生成；不可用时按同一构图用脚本绘制，并在制作说明中标注「未启用」。</li><li>阅读版用脚本从 Markdown 编译，避免手抄造成正文与成品不一致。</li></ol>
+<h2>十、合规声明</h2>
+<ul><li>世界观、人物、事件均为课堂虚构，不使用真实人物、真实机构、真实作品情节。</li><li>风格样章为本项目原创课堂示例，<strong>仅作风格基线，未整段抄入正文</strong>（正文为按基线重写的新文本，开头一句已刻意改写）。</li><li>未使用联网检索资料，故无需标注外部来源；<code>13_IP商业化与销售方案.md</code> 中的价格、转化率、收入均为课堂假设值，不是真实成交数据，不得对外宣称。</li><li>AI 参与创作已在第一节如实说明。</li></ul>
+  </div>
+</section>
+
+</div>
+</main>
+</div>
+<script>
+var IDX = [{"n": 0, "name": "沈砚", "category": "人物", "first_chapter": 1, "gloss": "东街记录员，负责给公共账册换页"}, {"n": 1, "name": "阿桉", "category": "人物", "first_chapter": 1, "gloss": "纸街抄写员，能把被划掉的条目抄一次"}, {"n": 2, "name": "钟叔", "category": "人物", "first_chapter": 1, "gloss": "旧钟楼看守，从不摘下手套"}, {"n": 3, "name": "小满", "category": "人物", "first_chapter": 2, "gloss": "寄存处学徒，只在周五傍晚开门"}, {"n": 4, "name": "东街", "category": "地点", "first_chapter": 1, "gloss": "长桌连排，公共账册所在的那条街"}, {"n": 5, "name": "纸街", "category": "地点", "first_chapter": 1, "gloss": "抄写员聚集，墙由层层旧纸叠成"}, {"n": 6, "name": "钟楼街", "category": "地点", "first_chapter": 1, "gloss": "安静，地面铺着钟摆投下的长影"}, {"n": 7, "name": "寄存处", "category": "地点", "first_chapter": 2, "gloss": "木门小窗，只在周五傍晚开放"}, {"n": 8, "name": "旧钟楼", "category": "地点", "first_chapter": 1, "gloss": "指针停住，无人知道是谁让它停的"}, {"n": 9, "name": "十七号柜", "category": "地点", "first_chapter": 3, "gloss": "寄存处里屋最下层，存旧账页"}, {"n": 10, "name": "公共账册", "category": "道具", "first_chapter": 1, "gloss": "每人每天只写一条，写第二条前条消失"}, {"n": 11, "name": "铜钥匙", "category": "道具", "first_chapter": 1, "gloss": "沈砚腰间，开十七号柜，柄上有横纹"}, {"n": 12, "name": "铜尺", "category": "道具", "first_chapter": 1, "gloss": "东街长桌上压纸的尺"}, {"n": 13, "name": "钝口纸刀", "category": "道具", "first_chapter": 1, "gloss": "阿桉撕存根、压纸角用的刀"}, {"n": 14, "name": "手套", "category": "道具", "first_chapter": 1, "gloss": "钟叔从不摘下，遮住空白的掌心"}, {"n": 15, "name": "木牌", "category": "道具", "first_chapter": 2, "gloss": "刻着编号，决定谁开哪个柜"}, {"n": 16, "name": "半片旧纸", "category": "道具", "first_chapter": 2, "gloss": "撕角存根，只剩半个木字，压在纸上沿"}, {"n": 17, "name": "薄账册", "category": "道具", "first_chapter": 3, "gloss": "钟叔的账册，抄有沈砚那句问话"}, {"n": 18, "name": "条目", "category": "术语", "first_chapter": 1, "gloss": "写进账册的一条话，每天只准一条"}, {"n": 19, "name": "划掉", "category": "术语", "first_chapter": 2, "gloss": "抹去条目，不可恢复"}, {"n": 20, "name": "抄写", "category": "术语", "first_chapter": 2, "gloss": "把别人划掉的条目重抄一次，只用一次"}, {"n": 21, "name": "寄存", "category": "术语", "first_chapter": 2, "gloss": "把账页交给寄存处保管，不涉交换"}, {"n": 22, "name": "存根", "category": "术语", "first_chapter": 1, "gloss": "抄写时撕下的纸角，作凭据"}, {"n": 23, "name": "换页", "category": "术语", "first_chapter": 1, "gloss": "每周一清晨给公共账册换新的一页"}, {"n": 24, "name": "三点十七分", "category": "术语", "first_chapter": 1, "gloss": "钟停住的时刻"}];
+var panelIds = ['cover','ch1','ch2','ch3','setting','appendix','audit','sales','notes'];
+function show(id, scroll){
+  panelIds.forEach(function(p){
+    var el = document.getElementById(p);
+    if(el) el.classList.toggle('on', p === id);
+  });
+  document.querySelectorAll('.navitem').forEach(function(a){
+    a.classList.toggle('on', a.getAttribute('data-t') === id);
+  });
+  if(scroll !== false) window.scrollTo({top:0, behavior:'auto'});
+  history.replaceState(null,'','#'+id);
+}
+document.querySelectorAll('.navitem').forEach(function(a){
+  a.addEventListener('click', function(e){ e.preventDefault(); show(a.getAttribute('data-t')); });
+});
+document.querySelectorAll('.pg').forEach(function(b){
+  b.addEventListener('click', function(){ show(b.getAttribute('data-go')); });
+});
+var q = document.getElementById('q'), res = document.getElementById('res'), act = -1, cur = [];
+function esc(s){ return s.replace(/[&<>]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c]; }); }
+function render(kw){
+  kw = (kw||'').trim().toLowerCase();
+  if(!kw){ res.classList.remove('on'); res.innerHTML=''; cur=[]; return; }
+  cur = IDX.filter(function(it){
+    return it.name.toLowerCase().indexOf(kw) >= 0 || it.gloss.toLowerCase().indexOf(kw) >= 0 || it.category.indexOf(kw) >= 0;
+  }).slice(0,12);
+  if(!cur.length){ res.innerHTML = '<div class="r"><b>没有匹配条目</b><span>试试「银」「钟」「条目」</span></div>'; res.classList.add('on'); return; }
+  res.innerHTML = cur.map(function(it,i){
+    return '<a class="r" data-i="'+i+'"><b>'+esc(it.name)+'</b><span>'+it.category+' · 第'+it.first_chapter+'章 · '+esc(it.gloss)+'</span></a>';
+  }).join('');
+  res.classList.add('on'); act = -1;
+}
+function gotoItem(i){
+  var it = cur[i]; if(!it) return;
+  show('appendix', false);
+  var row = document.getElementById('idx-'+it.n);
+  if(row){
+    row.scrollIntoView({block:'center'});
+    row.classList.remove('hit');
+    void row.offsetWidth;
+    row.classList.add('hit');
+    setTimeout(function(){ row.classList.remove('hit'); }, 2600);
+  }
+  res.classList.remove('on');
+}
+q.addEventListener('input', function(){ render(q.value); });
+q.addEventListener('keydown', function(e){
+  var items = res.querySelectorAll('.r[data-i]');
+  if(e.key === 'ArrowDown' || e.key === 'ArrowUp'){
+    e.preventDefault();
+    if(!items.length) return;
+    act = e.key === 'ArrowDown' ? (act+1) % items.length : (act-1+items.length) % items.length;
+    items.forEach(function(el,i){ el.classList.toggle('act', i === act); });
+  } else if(e.key === 'Enter'){
+    e.preventDefault();
+    gotoItem(act < 0 ? 0 : act);
+  } else if(e.key === 'Escape'){ res.classList.remove('on'); }
+});
+res.addEventListener('click', function(e){
+  var a = e.target.closest('.r[data-i]'); if(!a) return;
+  gotoItem(parseInt(a.getAttribute('data-i'),10));
+});
+document.addEventListener('click', function(e){
+  if(!e.target.closest('.searchbox')) res.classList.remove('on');
+});
+var img = document.getElementById('coverimg'), css = document.getElementById('csscover');
+function fallback(){ img.style.display='none'; css.style.display='block'; }
+img.addEventListener('error', fallback);
+if(img.complete && img.naturalWidth === 0) fallback();
+document.addEventListener('scroll', function(){
+  var h = document.documentElement;
+  var p = h.scrollTop / Math.max(1, (h.scrollHeight - h.clientHeight));
+  document.getElementById('bar').style.width = (p*100).toFixed(2) + '%';
+}, {passive:true});
+var start = (location.hash || '').replace('#','');
+if(start && panelIds.indexOf(start) >= 0) show(start); else show('cover');
+</script>
+</body>
+</html>
