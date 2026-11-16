@@ -77,7 +77,8 @@ tbody tr:hover{background:#fcfaf5}
 .pg:hover{border-color:var(--blue);color:var(--ink)}
 /* 封面 */
 .coverbox{padding:46px 0 10px}
-.cover{width:100%;max-width:360px;display:block;margin:0 auto;box-shadow:0 18px 44px rgba(40,44,48,.16);border-radius:1px}
+.cover{width:100%;max-width:360px;aspect-ratio:2/3;height:auto;display:block;margin:0 auto;background:#efe9dc;
+  box-shadow:0 18px 44px rgba(40,44,48,.16);border-radius:1px}
 .csscover{display:none;max-width:360px;margin:0 auto;aspect-ratio:2/3;background:linear-gradient(#788b96,#e4d4ba 72%);
   position:relative;overflow:hidden;box-shadow:0 18px 44px rgba(40,44,48,.16)}
 .csscover .t{position:absolute;top:9%;left:0;right:0;text-align:center;font-size:40px;letter-spacing:.2em;
@@ -477,7 +478,7 @@ function show(id, scroll){
   document.querySelectorAll('.navitem').forEach(function(a){
     a.classList.toggle('on', a.getAttribute('data-t') === id);
   });
-  if(scroll !== false) window.scrollTo({top:0, behavior:'auto'});
+  if(scroll !== false) window.scrollTo({top:0, behavior:'instant'});
   history.replaceState(null,'','#'+id);
 }
 document.querySelectorAll('.navitem').forEach(function(a){
